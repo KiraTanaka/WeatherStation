@@ -11,7 +11,7 @@ using Meteo.Models;
 namespace Meteo.Models
 {
     [JsonObject]
-    public class JsonTodayCard {
+    public class JsonPresentCard {
 		[JsonProperty]
         public int 	Temperature { get; set; }
 		[JsonProperty]
@@ -26,7 +26,7 @@ namespace Meteo.Models
         public string WindDirection { get; set; }
         [JsonProperty]
         public string Description { get; set; }
-        public JsonTodayCard (HistoryCard card)
+        public JsonPresentCard (HistoryCard card)
         {
             this.Temperature = card.Temperature;
             this.Humidity = card.Humidity;
@@ -39,15 +39,15 @@ namespace Meteo.Models
     [JsonObject]
     public class JsonCard
     {
-        [JsonProperty("date")]
+        [JsonProperty]
         public string Date { get; set; }
-        [JsonProperty("temperature")]
+        [JsonProperty]
         public int Temperature { get; set; }
-        [JsonProperty("humidity")]
+        [JsonProperty]
         public float Humidity { get; set; }
-        [JsonProperty("winddirection")]
+        [JsonProperty]
         public string WindDirection { get; set; }
-        [JsonProperty("description")]
+        [JsonProperty]
         public string Description { get; set; }
 
         public JsonCard() { }
@@ -76,14 +76,14 @@ namespace Meteo.Models
             this.Temperature = card.Temperature;
         }
     }
-    public class PackageTodayGraphicAndToday
+    public class PackageTodayGraphicAndPresent
     {
         [JsonProperty]
-        public JsonTodayCard Today { get; set; }
+        public JsonPresentCard Present { get; set; }
         [JsonProperty]
         public List<JsonTodayGraphic> TodayGraphic { get; set; }
 
-        public PackageTodayGraphicAndToday()
+        public PackageTodayGraphicAndPresent()
         {
             this.TodayGraphic = new List<JsonTodayGraphic>();
 

@@ -1,26 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\Akira\WeatherStation\Meteo.UnitTests\bin\Debug\Meteo.UnitTests.dll" total="2" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2015-11-14" time="22:36:42">
+<test-results name="C:\Users\Akira\WeatherStation\Meteo.UnitTests\bin\Debug\Meteo.UnitTests.dll" total="0" errors="0" failures="0" not-run="1" inconclusive="0" ignored="0" skipped="0" invalid="1" date="2015-11-15" time="23:15:11">
   <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\Akira\WeatherStation\Meteo.UnitTests\bin\Debug" machine-name="AK_COMP" user="Akira" user-domain="AK_COMP" />
   <culture-info current-culture="ru-RU" current-uiculture="ru-RU" />
-  <test-suite type="Assembly" name="C:\Users\Akira\WeatherStation\Meteo.UnitTests\bin\Debug\Meteo.UnitTests.dll" executed="True" result="Failure" success="False" time="0.586" asserts="0">
+  <test-suite type="Assembly" name="C:\Users\Akira\WeatherStation\Meteo.UnitTests\bin\Debug\Meteo.UnitTests.dll" executed="True" result="Failure" success="False" time="0.091" asserts="0">
     <results>
-      <test-suite type="Namespace" name="Meteo" executed="True" result="Failure" success="False" time="0.549" asserts="0">
+      <test-suite type="Namespace" name="Meteo" executed="True" result="Failure" success="False" time="0.090" asserts="0">
         <results>
-          <test-suite type="Namespace" name="UnitTests" executed="True" result="Failure" success="False" time="0.549" asserts="0">
+          <test-suite type="Namespace" name="UnitTests" executed="True" result="Failure" success="False" time="0.089" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="ParserMeteoDataTests" executed="True" result="Failure" success="False" time="0.543" asserts="0">
+              <test-suite type="TestFixture" name="LogicGetFutureAndPastTests" executed="True" result="Failure" success="False" time="0.088" asserts="0">
                 <results>
-                  <test-case name="Meteo.UnitTests.ParserMeteoDataTests.ParseInCard_CorrectData" executed="True" result="Success" success="True" time="0.452" asserts="7" />
-                  <test-case name="Meteo.UnitTests.ParserMeteoDataTests.ParseInCard_FieldIsNull" executed="True" result="Failure" success="False" time="0.042" asserts="2">
-                    <failure>
-                      <message><![CDATA[  Expected: 84.3300018f
-  But was:  56.2799988f
-]]></message>
-                      <stack-trace><![CDATA[в Meteo.UnitTests.ParserMeteoDataTests.CheckHistoryCard(HistoryCard historyCard, HistoryCard card) в c:\Users\Akira\WeatherStation\Meteo.UnitTests\ParserMeteoDataTests.cs:строка 15
-в Meteo.UnitTests.ParserMeteoDataTests.ParseInCard_FieldIsNull() в c:\Users\Akira\WeatherStation\Meteo.UnitTests\ParserMeteoDataTests.cs:строка 36
-]]></stack-trace>
-                    </failure>
+                  <test-case name="Meteo.UnitTests.LogicGetFutureAndPastTests.CheckCountPackage" executed="False" result="NotRunnable">
+                    <reason>
+                      <message><![CDATA[No arguments were provided]]></message>
+                    </reason>
                   </test-case>
                 </results>
               </test-suite>

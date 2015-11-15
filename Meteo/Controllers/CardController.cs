@@ -10,7 +10,6 @@ using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using System.Net;
-using System.Web.Script.Serialization;
 using Meteo.ExternalData;
 using Meteo.Validation;
 using Meteo.BusinessLogic;
@@ -25,7 +24,7 @@ namespace Meteo.Controllers
 
         public JsonResult GetTodayGraphicAndToday()
         {
-            PackageTodayGraphicAndToday package = new PackageTodayGraphicAndToday();
+            PackageTodayGraphicAndPresent package = new PackageTodayGraphicAndPresent();
             DateTime present = DateTime.Now.Date;
             DateTime endPresent = present.AddDays(1);
             DateTime nearestDate = DateTime.Now.AddMinutes(-30);
@@ -44,7 +43,7 @@ namespace Meteo.Controllers
                 .ToList();
             if (historyCard != null)
             {
-                package.Today = new JsonTodayCard(historyCard);
+                package.Present = new JsonPresentCard(historyCard);
             }
             package.TodayGraphic = historyCardsToday.Concat(forecastCardsToday)
                 .OrderBy(x => x.TimeHour)
@@ -54,21 +53,19 @@ namespace Meteo.Controllers
             return Json(package, JsonRequestBehavior.AllowGet);
         }
 
-        //[HttpPost]
-        public ActionResult MeteoData()//string data)
+        [HttpPost]
+        public ActionResult MeteoData(string data)
         {
-           //string data = "r:533|t:15.09|h:84.17|pt:19.43|p:983.65|g:10.60=r:470|t:15.08|h:84.22|pt:19.41|p:983.53|g:6.62=r:477|t:15.11|h:84.61|pt:19.41|p:983.61|g:21.19=";  
-            string data = "r:533|t:15.09|h:0|pt:19.43|p:983.65|g:10.60=r:470|t:15.08|h:84.22|pt:19.41|p:983.53|g:6.62=r:477|t:15.11|h:84.61|pt:19.41|p:983.61|g:21.19=";
-
+            //string data = "r:533|t:15.09|h:84.17|pt:19.43|p:983.65|g:10.60=r:470|t:15.08|h:84.22|pt:19.41|p:983.53|g:6.62=r:477|t:15.11|h:84.61|pt:19.41|p:983.61|g:21.19=";  
             if (data != null)
             {
                 HistoryCard historyCard = ParserMeteoData.ParseInCard(data);
-                //historyCard.DateTime = DateTime.Now;
-                //if (DataValidation.AllValidation(historyCard))
-                //{
-                //    db.HistoryCards.Add(historyCard);
-                //    db.SaveChanges();
-                //}
+                historyCard.DateTime = DateTime.Now;
+                if (DataValidation.AllValidation(historyCard))
+                {
+                    db.HistoryCards.Add(historyCard);
+                    db.SaveChanges();
+                }
             }
             return RedirectToAction("OpenWeatherData");
         } 

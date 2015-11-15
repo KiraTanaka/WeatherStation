@@ -44,10 +44,11 @@ namespace Meteo.BusinessLogic
         public static PackageFutureAndPast CreateEachDayCards(List<JsonCard> forecastCards, List<JsonCard> historyCards)
         {
             PackageFutureAndPast package = new PackageFutureAndPast();
+            int countDays = 5;
             DateTime present = DateTime.Now;
             List<JsonCard> listOfFutureAndPastCards = new List<JsonCard>();
             listOfFutureAndPastCards=forecastCards.Concat(historyCards).ToList();
-            for (var counter = 0; counter < 5; counter++)
+            for (var counter = 0; counter <countDays; counter++)
             {
                 JsonCard card = CreateDayCard(listOfFutureAndPastCards.Where(x => 
                     x.Date == (present.AddDays(counter + 1).Day + "." + present.Month))
